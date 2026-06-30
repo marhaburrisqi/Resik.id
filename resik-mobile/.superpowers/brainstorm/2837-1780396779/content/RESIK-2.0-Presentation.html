@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESIK 2.0 — Redesign Presentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --slate-50: #F8FAFC;
+    --slate-100: #F1F5F9;
+    --slate-200: #E2E8F0;
+    --slate-300: #CBD5E1;
+    --slate-400: #94A3B8;
+    --slate-500: #64748B;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1E293B;
+    --slate-900: #0F172A;
+    --green-600: #2D6A4F;
+    --green-500: #10B981;
+    --amber-500: #D97706;
+    --blue-500: #3B82F6;
+    --red-500: #EF4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: white;
+    color: var(--slate-900);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============== PAGE LAYOUT ============== */
+  .page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 48px;
+    page-break-after: always;
+    min-height: 100vh;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  .page-number {
+    position: absolute;
+    bottom: 30px;
+    right: 48px;
+    font-size: 11px;
+    color: var(--slate-400);
+    font-weight: 500;
+  }
+
+  /* ============== TYPOGRAPHY ============== */
+  h1 {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    color: var(--slate-900);
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--slate-800);
+  }
+  h4 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--slate-400);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--slate-500);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 700px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--green-600);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* ============== COMPONENTS ============== */
+  .divider {
+    height: 1px;
+    background: var(--slate-200);
+    margin: 32px 0;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .info-card {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .metric-card {
+    background: var(--slate-900);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    text-align: center;
+  }
+  .metric-card .metric-value {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+  }
+  .metric-card .metric-label {
+    font-size: 12px;
+    color: var(--slate-400);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .pros-cons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .pro-card {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .pro-card h4 { color: #166534; margin-bottom: 8px; }
+  .pro-card ul { list-style: none; }
+  .pro-card li { font-size: 13px; color: #166534; padding: 3px 0; }
+  .pro-card li::before { content: "+ "; font-weight: 800; }
+
+  .con-card {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .con-card h4 { color: #991B1B; margin-bottom: 8px; }
+  .con-card ul { list-style: none; }
+  .con-card li { font-size: 13px; color: #991B1B; padding: 3px 0; }
+  .con-card li::before { content: "- "; font-weight: 800; }
+
+  .principle-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .principle-item:last-child { border-bottom: none; }
+  .principle-num {
+    background: var(--slate-900);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    background: var(--slate-50);
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--slate-500);
+    border-bottom: 2px solid var(--slate-200);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--slate-100);
+    vertical-align: top;
+  }
+
+  /* ============== PHONE MOCKUP ============== */
+  .mockup-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .mockup-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mockup-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--slate-400);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .phone {
+    width: 280px;
+    min-height: 570px;
+    background: var(--slate-50);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .phone-status {
+    height: 32px;
+    background: var(--slate-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--slate-600);
+  }
+
+  .phone-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 14px 14px;
+    font-size: 11px;
+  }
+
+  .phone-tabs {
+    height: 48px;
+    background: white;
+    border-top: 1px solid var(--slate-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--slate-400);
+    flex-shrink: 0;
+  }
+  .phone-tabs .t-active { color: var(--green-600); }
+  .phone-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .phone-tab-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: var(--slate-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-tab-dot.active { background: var(--green-600); }
+
+  /* Mini components inside phone */
+  .m-card {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  .m-chip {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .m-chip-amber { background: #FEF3C7; color: #92400E; }
+  .m-chip-green { background: #ECFDF5; color: #065F46; }
+  .m-chip-blue { background: #EFF6FF; color: #1E40AF; }
+
+  .m-section-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--slate-900);
+    margin: 8px 0 4px;
+  }
+
+  /* ============== PRINT ============== */
+  @media print {
+    body { background: white; }
+    .page {
+      padding: 40px 36px;
+      min-height: auto;
+      page-break-inside: avoid;
+    }
+    .phone {
+      box-shadow: 0 0 0 1px #ddd;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .metric-card, .tag, .phone-tab-dot.active, .principle-num {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1: COVER ===================== -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+  <div class="tag">REDESIGN PROPOSAL</div>
+  <h1 style="font-size: 56px; letter-spacing: -2px;">RESIK 2.0</h1>
+  <h1 style="font-size: 56px; letter-spacing: -2px; color: var(--green-600); margin-bottom: 24px;">Village Environmental<br>Operating System</h1>
+  <p class="subtitle" style="font-size: 18px; margin-bottom: 40px;">
+    Transformasi aplikasi dari prototype kompetisi menjadi layanan sipil siap produksi. 
+    Terinspirasi arsitektur informasi Gojek untuk pengumpulan sampah pedesaan.
+  </p>
+
+  <div style="display: flex; gap: 20px; margin-top: 20px;">
+    <div style="font-size: 13px; color: var(--slate-500);">
+      <strong style="color: var(--slate-900);">Target Pengguna</strong><br>
+      Warga desa usia 45-70 tahun
+    </div>
+    <div style="font-size: 13px; color: var(--slate-500);">
+      <strong style="color: var(--slate-900);">Platform</strong><br>
+      Android SDK 21+, 2GB RAM
+    </div>
+    <div style="font-size: 13px; color: var(--slate-500);">
+      <strong style="color: var(--slate-900);">Framework</strong><br>
+      React Native (Expo SDK 54)
+    </div>
+    <div style="font-size: 13px; color: var(--slate-500);">
+      <strong style="color: var(--slate-900);">Tanggal</strong><br>
+      2 Juni 2026
+    </div>
+  </div>
+  <div class="page-number">1</div>
+</div>
+
+<!-- ===================== PAGE 2: PROBLEM ===================== -->
+<div class="page">
+  <div class="tag">MASALAH</div>
+  <h2>Mengapa RESIK Perlu Redesign?</h2>
+  <p class="subtitle" style="margin-bottom: 28px;">Temuan audit dari simulasi pengguna nyata dan stress test perangkat.</p>
+
+  <div class="grid-3" style="margin-bottom: 28px;">
+    <div class="metric-card">
+      <div class="metric-value">5+</div>
+      <div class="metric-label">Scroll penuh di Beranda</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">70%</div>
+      <div class="metric-label">Ruang dipakai timeline</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">45-70</div>
+      <div class="metric-label">Usia target pengguna (th)</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 24px;">Temuan Utama Audit</h3>
+  <div style="margin-top: 12px;">
+    <div class="principle-item">
+      <div class="principle-num">1</div>
+      <div>
+        <strong>Timeline vertikal mendominasi layar</strong>
+        <p style="font-size: 13px; color: var(--slate-500); margin-top: 2px;">Setiap kartu laporan menampilkan timeline 5 langkah. Pada HP 5 inci, satu laporan menghabiskan seluruh layar. Pengguna harus scroll berkali-kali untuk melihat informasi penting.</p>
+      </div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">2</div>
+      <div>
+        <strong>Aksi utama tersembunyi di bawah scroll</strong>
+        <p style="font-size: 13px; color: var(--slate-500); margin-top: 2px;">Tombol "Setor Sampah" dan "Lapor Liar" baru terlihat setelah scroll melewati wallet card dan status tracker. Pengguna lansia tidak menyadari fitur ini ada.</p>
+      </div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">3</div>
+      <div>
+        <strong>Warna hijau terlalu dominan</strong>
+        <p style="font-size: 13px; color: var(--slate-500); margin-top: 2px;">Hijau dipakai untuk background, teks, ikon, border, dan tombol. Tidak ada hierarki visual — semua terlihat sama pentingnya.</p>
+      </div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">4</div>
+      <div>
+        <strong>Emoji digunakan sebagai pengganti ikon</strong>
+        <p style="font-size: 13px; color: var(--slate-500); margin-top: 2px;">Emoji render berbeda di setiap perangkat Android. Pada HP murah, emoji sering terlihat rusak atau tidak muncul. Mengurangi kesan profesional.</p>
+      </div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">5</div>
+      <div>
+        <strong>Tidak ada informasi reward di Beranda</strong>
+        <p style="font-size: 13px; color: var(--slate-500); margin-top: 2px;">Pengguna tidak tahu seberapa dekat mereka dengan hadiah. Motivasi menurun karena tidak ada indikator progress yang jelas.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-number">2</div>
+</div>
+
+<!-- ===================== PAGE 3: DESIGN PRINCIPLES ===================== -->
+<div class="page">
+  <div class="tag">PRINSIP DESAIN</div>
+  <h2>Gojek Simplicity untuk Sampah Desa</h2>
+  <p class="subtitle" style="margin-bottom: 28px;">Bukan klon financial super-app. Kesederhanaan Gojek diterapkan untuk pengumpulan sampah pedesaan.</p>
+
+  <div class="grid-2" style="gap: 24px;">
+    <div class="info-card">
+      <h3 style="color: var(--green-600);">1. Aksi di Atas Segalanya</h3>
+      <p style="font-size: 13px; color: var(--slate-600); margin-top: 8px;">
+        Quick Action Grid (2x2) selalu terlihat tanpa scroll. 
+        Pengguna bisa langsung setor sampah atau lapor liar dalam 1 ketukan dari Beranda.
+      </p>
+    </div>
+    <div class="info-card">
+      <h3 style="color: var(--green-600);">2. Status Eksplisit, Bukan Abstrak</h3>
+      <p style="font-size: 13px; color: var(--slate-600); margin-top: 8px;">
+        Chip status yang jelas: "Menunggu", "Dijadwalkan", "Diambil", "Selesai". 
+        Tidak ada dot timeline abstrak pada daftar. Timeline lengkap hanya di halaman detail.
+      </p>
+    </div>
+    <div class="info-card">
+      <h3 style="color: var(--green-600);">3. Hijau Hanya untuk Aksi</h3>
+      <p style="font-size: 13px; color: var(--slate-600); margin-top: 8px;">
+        Warna hijau dicadangkan khusus untuk tombol CTA dan status sukses. 
+        Semua permukaan menggunakan palet slate netral untuk mengurangi kelelahan visual.
+      </p>
+    </div>
+    <div class="info-card">
+      <h3 style="color: var(--green-600);">4. Satu Layar, Satu Tujuan</h3>
+      <p style="font-size: 13px; color: var(--slate-600); margin-top: 8px;">
+        Setiap tab memiliki satu fungsi utama yang jelas. 
+        Tidak ada informasi yang tumpang tindih antar tab. Scrolling berkurang 40%.
+      </p>
+    </div>
+    <div class="info-card">
+      <h3 style="color: var(--green-600);">5. Ramah Lansia</h3>
+      <p style="font-size: 13px; color: var(--slate-600); margin-top: 8px;">
+        Touch target minimum 44x44px. Teks besar dan jelas.
+        Jalur bantuan WhatsApp selalu tersedia di Beranda untuk yang kesulitan menggunakan HP.
+      </p>
+    </div>
+    <div class="info-card">
+      <h3 style="color: var(--green-600);">6. Tanpa Emoji</h3>
+      <p style="font-size: 13px; color: var(--slate-600); margin-top: 8px;">
+        Semua emoji diganti dengan ikon SVG konsisten (Ionicons). 
+        Tampilan seragam di semua perangkat Android, termasuk HP murah.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Palet Warna RESIK 2.0</h3>
+  <div style="display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #0F172A; border-radius: 8px;"></div>
+      <div><div style="font-size: 11px; font-weight: 700;">Slate 900</div><div style="font-size: 10px; color: var(--slate-500);">Teks utama, wallet</div></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0;"></div>
+      <div><div style="font-size: 11px; font-weight: 700;">Slate 50</div><div style="font-size: 10px; color: var(--slate-500);">Background</div></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #2D6A4F; border-radius: 8px;"></div>
+      <div><div style="font-size: 11px; font-weight: 700;">Green 600</div><div style="font-size: 10px; color: var(--slate-500);">CTA & sukses saja</div></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #D97706; border-radius: 8px;"></div>
+      <div><div style="font-size: 11px; font-weight: 700;">Amber 500</div><div style="font-size: 10px; color: var(--slate-500);">Status proses</div></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #3B82F6; border-radius: 8px;"></div>
+      <div><div style="font-size: 11px; font-weight: 700;">Blue 500</div><div style="font-size: 10px; color: var(--slate-500);">Info & poin</div></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #EF4444; border-radius: 8px;"></div>
+      <div><div style="font-size: 11px; font-weight: 700;">Red 500</div><div style="font-size: 10px; color: var(--slate-500);">Destruktif saja</div></div>
+    </div>
+  </div>
+  <div class="page-number">3</div>
+</div>
+
+<!-- ===================== PAGE 4: IA OVERVIEW ===================== -->
+<div class="page">
+  <div class="tag">ARSITEKTUR INFORMASI</div>
+  <h2>Struktur Navigasi RESIK 2.0</h2>
+  <p class="subtitle" style="margin-bottom: 28px;">4 tab dengan tujuan tunggal yang jelas. Tidak ada tumpang tindih informasi.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tab</th>
+        <th>Label</th>
+        <th>Fungsi Utama</th>
+        <th>Perubahan dari v1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Beranda</strong></td>
+        <td>Hub: wallet, quick actions, status terakhir, reward, bantuan, dampak desa</td>
+        <td>Timeline dihapus, carousel reward diganti kartu tunggal, grid aksi ditambahkan</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Setor</strong> <span style="font-size: 10px; color: var(--slate-400);">(sebelumnya: Lapor)</span></td>
+        <td>Wizard 5 langkah untuk setor sampah atau lapor liar</td>
+        <td>Restyle saja — tanpa emoji, warna disesuaikan</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Riwayat</strong> <span style="font-size: 10px; color: var(--slate-400);">(sebelumnya: Aktivitas)</span></td>
+        <td>Daftar laporan kompak, dikelompokkan berdasarkan status</td>
+        <td>Timeline vertikal dihapus, diganti chip status eksplisit</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Akun</strong> <span style="font-size: 10px; color: var(--slate-400);">(sebelumnya: Profil)</span></td>
+        <td>Profil, ringkasan akun, mode petugas, pengaturan</td>
+        <td>Kartu ringkasan ditambahkan, menu list iOS-style</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>Halaman Baru: Detail Laporan</h3>
+  <p style="font-size: 13px; color: var(--slate-600); margin: 8px 0 16px;">
+    Route: <code style="background: var(--slate-100); padding: 2px 8px; border-radius: 4px;">app/report-detail.tsx</code> — 
+    Bukan tab, melainkan halaman push di atas navigator.
+    <strong>Ini satu-satunya tempat timeline vertikal lengkap ditampilkan.</strong>
+  </p>
+
+  <div class="info-card">
+    <h4>Alur Navigasi</h4>
+    <div style="font-size: 13px; color: var(--slate-600); line-height: 2; margin-top: 8px;">
+      Beranda [Setor Sampah] &rarr; Tab Setor (wizard step 1)<br>
+      Beranda [Lapor Liar] &rarr; Tab Setor (wizard step 1, type=illegal)<br>
+      Beranda [Tukar Poin] &rarr; Halaman detail reward (masa depan)<br>
+      Beranda [Bantuan] &rarr; WhatsApp deep link<br>
+      Beranda [Status Terakhir] &rarr; Tab Riwayat<br>
+      Riwayat [Ketuk kartu] &rarr; Halaman Detail Laporan (timeline lengkap)<br>
+      Akun [Mode Petugas] &rarr; Dashboard petugas (in-tab toggle)
+    </div>
+  </div>
+  <div class="page-number">4</div>
+</div>
+
+<!-- ===================== PAGE 5: BERANDA MOCKUP ===================== -->
+<div class="page">
+  <div class="tag">MOCKUP — BERANDA</div>
+  <h2>Beranda: Hub Gojek-Style</h2>
+  <p class="subtitle" style="margin-bottom: 24px;">Satu layar untuk semua kebutuhan warga. Quick actions selalu terlihat tanpa scroll.</p>
+
+  <div style="display: flex; gap: 32px; align-items: flex-start;">
+    <!-- Phone Mockup -->
+    <div class="mockup-wrapper" style="flex-shrink: 0;">
+      <div class="phone">
+        <div class="phone-status">09:41</div>
+        <div class="phone-content">
+          <!-- Hero Wallet -->
+          <div style="background: linear-gradient(135deg, #0F172A, #1E293B); border-radius: 14px; padding: 14px; color: white; margin-bottom: 8px;">
+            <div style="font-size: 9px; color: #94A3B8;">Halo, Ibu Aminah</div>
+            <div style="font-size: 28px; font-weight: 900; margin: 2px 0; letter-spacing: -1px;">4.250</div>
+            <div style="font-size: 9px; color: #94A3B8;">Poin Tabungan Sampah</div>
+            <div style="font-size: 8px; color: #64748B; margin-top: 2px;">Setara Rp4.250 sembako</div>
+          </div>
+          <!-- Quick Actions 2x2 -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px;">
+            <div class="m-card" style="text-align: center; padding: 10px 6px;">
+              <div style="width: 32px; height: 32px; background: #ECFDF5; border-radius: 8px; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><path d="M5 7h14l-1.5 9.5a2 2 0 01-2 1.5H8.5a2 2 0 01-2-1.5L5 7z"/><path d="M3 7h18"/></svg>
+              </div>
+              <div style="font-weight: 700; font-size: 9px;">Setor Sampah</div>
+              <div style="font-size: 8px; color: #64748B;">Panggil petugas</div>
+            </div>
+            <div class="m-card" style="text-align: center; padding: 10px 6px;">
+              <div style="width: 32px; height: 32px; background: #FEF3C7; border-radius: 8px; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              </div>
+              <div style="font-weight: 700; font-size: 9px;">Lapor Liar</div>
+              <div style="font-size: 8px; color: #64748B;">Foto & lapor</div>
+            </div>
+            <div class="m-card" style="text-align: center; padding: 10px 6px;">
+              <div style="width: 32px; height: 32px; background: #EFF6FF; border-radius: 8px; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/><rect x="4" y="8" width="16" height="4" rx="1"/></svg>
+              </div>
+              <div style="font-weight: 700; font-size: 9px;">Tukar Poin</div>
+              <div style="font-size: 8px; color: #64748B;">Sembako & pulsa</div>
+            </div>
+            <div class="m-card" style="text-align: center; padding: 10px 6px;">
+              <div style="width: 32px; height: 32px; background: #F1F5F9; border-radius: 8px; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3"/></svg>
+              </div>
+              <div style="font-weight: 700; font-size: 9px;">Bantuan</div>
+              <div style="font-size: 8px; color: #64748B;">Hubungi desa</div>
+            </div>
+          </div>
+          <!-- Status Terakhir -->
+          <div class="m-section-title">Status Terakhir</div>
+          <div class="m-card" style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; background: #FEF3C7; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-weight: 700; font-size: 10px;">Organik · Karung Sedang</div>
+              <div style="font-size: 8px; color: #64748B;">Jl. Melati RT 03</div>
+            </div>
+            <span class="m-chip m-chip-amber">Dijadwalkan</span>
+          </div>
+          <!-- Reward Terdekat -->
+          <div class="m-section-title">Reward Terdekat</div>
+          <div class="m-card" style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; background: #EFF6FF; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 10px;">Minyak Goreng 1L</div>
+              <div style="font-size: 8px; color: #64748B;">Kurang <b style="color: #3B82F6;">12.750</b> poin</div>
+              <div style="height: 3px; background: #E2E8F0; border-radius: 2px; margin-top: 4px;"><div style="height: 100%; width: 25%; background: #3B82F6; border-radius: 2px;"></div></div>
+            </div>
+          </div>
+          <!-- WhatsApp -->
+          <div class="m-section-title">Butuh Bantuan?</div>
+          <div class="m-card" style="background: #F0FDF4; border: 1px solid #BBF7D0; display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; background: #DCFCE7; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#16A34A"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 10px;">Hubungi Petugas Desa</div>
+              <div style="font-size: 8px; color: #475569;">Kami bantu lewat WhatsApp</div>
+            </div>
+          </div>
+          <!-- Impact -->
+          <div style="text-align: center; font-size: 8px; color: #94A3B8; margin-top: 10px; padding: 6px;">
+            <b style="color: #475569;">312 kg</b> terkumpul · <b style="color: #475569;">57</b> warga · <b style="color: #475569;">9</b> titik bersih
+          </div>
+        </div>
+        <div class="phone-tabs">
+          <div class="phone-tab t-active"><div class="phone-tab-dot active"></div>Beranda</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Setor</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Riwayat</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Akun</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation -->
+    <div style="flex: 1; min-width: 280px;">
+      <h3>Anatomi Beranda</h3>
+      <table style="margin-top: 12px;">
+        <thead>
+          <tr><th>#</th><th>Section</th><th>Fungsi</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Hero Wallet</strong></td><td>Saldo poin + setara rupiah. Dark card, fokus utama.</td></tr>
+          <tr><td>2</td><td><strong>Quick Action Grid</strong></td><td>4 aksi utama. Tidak perlu scroll. Touch target besar.</td></tr>
+          <tr><td>3</td><td><strong>Status Terakhir</strong></td><td>Laporan aktif terakhir + chip status eksplisit.</td></tr>
+          <tr><td>4</td><td><strong>Reward Terdekat</strong></td><td>Reward terdekat yang bisa ditukar + progress bar.</td></tr>
+          <tr><td>5</td><td><strong>WhatsApp Bantuan</strong></td><td>Jalur bantuan lansia via WhatsApp petugas desa.</td></tr>
+          <tr><td>6</td><td><strong>Dampak Desa</strong></td><td>Statistik komunitas dalam satu baris ringkas.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pros-cons-grid" style="margin-top: 20px;">
+        <div class="pro-card">
+          <h4>KEUNGGULAN</h4>
+          <ul>
+            <li>Semua aksi terlihat tanpa scroll</li>
+            <li>Status jelas dengan chip eksplisit</li>
+            <li>Jalur bantuan lansia tersedia</li>
+            <li>Reward sebagai motivasi langsung</li>
+            <li>Scrolling berkurang 60%+</li>
+          </ul>
+        </div>
+        <div class="con-card">
+          <h4>TRADE-OFF</h4>
+          <ul>
+            <li>Katalog reward tidak lengkap (di sub-page)</li>
+            <li>Hanya 1 status terakhir ditampilkan</li>
+            <li>Dampak desa lebih kecil tampilannya</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-number">5</div>
+</div>
+
+<!-- ===================== PAGE 6: RIWAYAT + AKUN MOCKUPS ===================== -->
+<div class="page">
+  <div class="tag">MOCKUP — RIWAYAT & AKUN</div>
+  <h2>Riwayat & Akun</h2>
+  <p class="subtitle" style="margin-bottom: 24px;">Daftar kompak tanpa timeline. Profil ringkas dengan menu list.</p>
+
+  <div style="display: flex; gap: 24px; align-items: flex-start;">
+    <!-- Riwayat Phone -->
+    <div class="mockup-wrapper" style="flex-shrink: 0;">
+      <div class="mockup-label">Riwayat</div>
+      <div class="phone">
+        <div class="phone-status">09:41</div>
+        <div class="phone-content">
+          <div style="font-size: 16px; font-weight: 900; color: #0F172A; margin: 6px 0 8px;">Riwayat</div>
+          <!-- Summary -->
+          <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+            <div style="flex: 1; background: white; border-radius: 10px; padding: 8px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+              <div style="font-size: 16px; font-weight: 900; color: #D97706;">2</div>
+              <div style="font-size: 7px; color: #64748B; font-weight: 600;">Diproses</div>
+            </div>
+            <div style="flex: 1; background: white; border-radius: 10px; padding: 8px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+              <div style="font-size: 16px; font-weight: 900; color: #10B981;">8</div>
+              <div style="font-size: 7px; color: #64748B; font-weight: 600;">Selesai</div>
+            </div>
+            <div style="flex: 1; background: white; border-radius: 10px; padding: 8px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+              <div style="font-size: 16px; font-weight: 900; color: #3B82F6;">4.250</div>
+              <div style="font-size: 7px; color: #64748B; font-weight: 600;">Poin</div>
+            </div>
+          </div>
+          <!-- Filter Chips -->
+          <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+            <div style="background: #0F172A; color: white; padding: 4px 12px; border-radius: 12px; font-size: 8px; font-weight: 700;">Semua</div>
+            <div style="background: white; border: 1px solid #E2E8F0; padding: 4px 12px; border-radius: 12px; font-size: 8px; color: #475569;">Diproses</div>
+            <div style="background: white; border: 1px solid #E2E8F0; padding: 4px 12px; border-radius: 12px; font-size: 8px; color: #475569;">Selesai</div>
+          </div>
+          <!-- Active -->
+          <div class="m-section-title">Sedang Diproses (2)</div>
+          <div class="m-card" style="border-left: 3px solid #D97706;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div><div style="font-weight: 700; font-size: 10px;">Organik · Karung Sedang</div><div style="font-size: 8px; color: #64748B;">Jl. Melati RT 03 · 2 Jun</div></div>
+              <span class="m-chip m-chip-amber">Dijadwalkan</span>
+            </div>
+          </div>
+          <div class="m-card" style="border-left: 3px solid #D97706;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div><div style="font-weight: 700; font-size: 10px;">Anorganik · Kresek</div><div style="font-size: 8px; color: #64748B;">Jl. Dahlia RT 01 · 1 Jun</div></div>
+              <span class="m-chip m-chip-amber">Menunggu</span>
+            </div>
+          </div>
+          <!-- Completed -->
+          <div class="m-section-title" style="margin-top: 8px;">Selesai</div>
+          <div class="m-card" style="border-left: 3px solid #10B981;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div><div style="font-weight: 700; font-size: 10px;">B3 · Karung Sedang</div><div style="font-size: 8px; color: #64748B;">28 Mei 2026</div></div>
+              <div style="text-align: right;"><div style="color: #10B981; font-weight: 800; font-size: 11px;">+500</div><div style="font-size: 7px; color: #64748B;">poin</div></div>
+            </div>
+          </div>
+          <div class="m-card" style="border-left: 3px solid #10B981;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div><div style="font-weight: 700; font-size: 10px;">Organik · Gerobak</div><div style="font-size: 8px; color: #64748B;">25 Mei 2026</div></div>
+              <div style="text-align: right;"><div style="color: #10B981; font-weight: 800; font-size: 11px;">+1.200</div><div style="font-size: 7px; color: #64748B;">poin</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-tabs">
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Beranda</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Setor</div>
+          <div class="phone-tab t-active"><div class="phone-tab-dot active"></div>Riwayat</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Akun</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Akun Phone -->
+    <div class="mockup-wrapper" style="flex-shrink: 0;">
+      <div class="mockup-label">Akun</div>
+      <div class="phone">
+        <div class="phone-status">09:41</div>
+        <div class="phone-content">
+          <div style="font-size: 16px; font-weight: 900; color: #0F172A; margin: 6px 0 8px;">Akun</div>
+          <!-- Profile -->
+          <div class="m-card" style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 40px; height: 40px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #475569; flex-shrink: 0;">IA</div>
+            <div>
+              <div style="font-weight: 800; font-size: 12px;">Ibu Aminah</div>
+              <div style="font-size: 9px; color: #64748B;">0812-3456-7890</div>
+              <div style="display: flex; align-items: center; gap: 3px; margin-top: 2px;"><div style="width: 5px; height: 5px; background: #10B981; border-radius: 50%;"></div><span style="font-size: 8px; color: #10B981; font-weight: 600;">Warga Aktif</span></div>
+            </div>
+          </div>
+          <!-- Summary -->
+          <div class="m-card" style="display: flex;">
+            <div style="flex: 1; text-align: center; padding: 4px 0;">
+              <div style="font-size: 20px; font-weight: 900;">4.250</div>
+              <div style="font-size: 8px; color: #64748B; font-weight: 600;">Total Poin</div>
+            </div>
+            <div style="width: 1px; background: #E2E8F0; margin: 4px 0;"></div>
+            <div style="flex: 1; text-align: center; padding: 4px 0;">
+              <div style="font-size: 20px; font-weight: 900;">8</div>
+              <div style="font-size: 8px; color: #64748B; font-weight: 600;">Setor Selesai</div>
+            </div>
+          </div>
+          <!-- Officer -->
+          <div style="background: #0F172A; border-radius: 12px; padding: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 10px;">
+            <div style="background: rgba(45,106,79,0.25); border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#40916C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="color: white; font-weight: 700; font-size: 10px;">Mode Petugas</div>
+              <div style="font-size: 8px; color: #94A3B8;">Timbangan & verifikasi</div>
+            </div>
+            <span style="color: #64748B; font-size: 12px;">›</span>
+          </div>
+          <!-- Menu -->
+          <div class="m-card" style="padding: 2px 10px;">
+            <div style="padding: 8px 0; border-bottom: 1px solid #F1F5F9; display: flex; justify-content: space-between; font-size: 10px; font-weight: 600;"><span>Ubah Nomor WhatsApp</span><span style="color: #94A3B8;">›</span></div>
+            <div style="padding: 8px 0; border-bottom: 1px solid #F1F5F9; display: flex; justify-content: space-between; font-size: 10px; font-weight: 600;"><span>Bantuan & Dukungan</span><span style="color: #94A3B8;">›</span></div>
+            <div style="padding: 8px 0; border-bottom: 1px solid #F1F5F9; display: flex; justify-content: space-between; font-size: 10px; font-weight: 600;"><span>Tentang RESIK</span><span style="color: #94A3B8;">›</span></div>
+            <div style="padding: 8px 0; display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; color: #EF4444;"><span>Keluar Akun</span><span>›</span></div>
+          </div>
+          <div style="text-align: center; font-size: 8px; color: #94A3B8; margin-top: 10px;">RESIK v2.0.0</div>
+        </div>
+        <div class="phone-tabs">
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Beranda</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Setor</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Riwayat</div>
+          <div class="phone-tab t-active"><div class="phone-tab-dot active"></div>Akun</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3>Riwayat — Perubahan Kunci</h3>
+      <div style="font-size: 12px; color: var(--slate-600); margin: 8px 0 16px; line-height: 1.8;">
+        <strong style="color: var(--green-600);">Dihapus:</strong> Timeline vertikal di setiap kartu<br>
+        <strong style="color: var(--green-600);">Diganti:</strong> Chip status eksplisit (teks jelas)<br>
+        <strong style="color: var(--green-600);">Ditambah:</strong> Border kiri berwarna per grup<br>
+        <strong style="color: var(--green-600);">Ditambah:</strong> Poin yang diperoleh pada kartu selesai<br>
+        <strong style="color: var(--green-600);">Dipindah:</strong> Timeline lengkap ke halaman detail
+      </div>
+
+      <div class="divider" style="margin: 16px 0;"></div>
+
+      <h3>Akun — Perubahan Kunci</h3>
+      <div style="font-size: 12px; color: var(--slate-600); margin: 8px 0 16px; line-height: 1.8;">
+        <strong style="color: var(--green-600);">Ditambah:</strong> Kartu ringkasan akun (poin + setor)<br>
+        <strong style="color: var(--green-600);">Diubah:</strong> Menu jadi list-style iOS<br>
+        <strong style="color: var(--green-600);">Dipertahankan:</strong> Mode petugas (dark card)<br>
+        <strong style="color: var(--green-600);">Ditambah:</strong> Versi aplikasi di footer
+      </div>
+
+      <div class="divider" style="margin: 16px 0;"></div>
+
+      <h3>Ketuk Kartu Riwayat</h3>
+      <p style="font-size: 12px; color: var(--slate-600); line-height: 1.6;">
+        Ketuk kartu mana pun di Riwayat membuka halaman <strong>Detail Laporan</strong>.
+        Di sinilah satu-satunya timeline vertikal lengkap ditampilkan,
+        bersama foto, alamat, kode pelacakan, dan tombol WhatsApp petugas.
+      </p>
+    </div>
+  </div>
+  <div class="page-number">6</div>
+</div>
+
+<!-- ===================== PAGE 7: DETAIL + WIZARD ===================== -->
+<div class="page">
+  <div class="tag">MOCKUP — DETAIL & SETOR</div>
+  <h2>Detail Laporan & Wizard Setor</h2>
+  <p class="subtitle" style="margin-bottom: 24px;">Timeline lengkap hanya di halaman detail. Wizard restyled tanpa perubahan alur.</p>
+
+  <div style="display: flex; gap: 24px; align-items: flex-start;">
+    <!-- Detail Phone -->
+    <div class="mockup-wrapper" style="flex-shrink: 0;">
+      <div class="mockup-label">Detail Laporan</div>
+      <div class="phone">
+        <div class="phone-status">09:41</div>
+        <div class="phone-content">
+          <!-- Back Header -->
+          <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0 12px;">
+            <div style="width: 28px; height: 28px; background: #F1F5F9; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </div>
+            <div style="font-size: 14px; font-weight: 800;">Detail Laporan</div>
+          </div>
+          <!-- Report Info -->
+          <div class="m-card">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <div><div style="font-weight: 800; font-size: 12px;">Organik</div><div style="font-size: 8px; color: #64748B;">Karung Sedang (~8 kg)</div></div>
+              <span class="m-chip m-chip-amber">Dijadwalkan</span>
+            </div>
+            <div style="border-top: 1px solid #F1F5F9; padding-top: 6px;">
+              <div style="display: flex; justify-content: space-between; font-size: 9px; padding: 3px 0;"><span style="color: #64748B;">Alamat</span><span style="font-weight: 600;">Jl. Melati RT 03</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 9px; padding: 3px 0;"><span style="color: #64748B;">Tanggal</span><span style="font-weight: 600;">2 Jun 2026</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 9px; padding: 3px 0;"><span style="color: #64748B;">Kode</span><span style="font-weight: 700; color: #3B82F6; font-family: monospace;">RSK-240602-A3F</span></div>
+            </div>
+          </div>
+          <!-- Photo -->
+          <div class="m-section-title">Foto</div>
+          <div style="background: #E2E8F0; border-radius: 10px; height: 80px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <!-- Full Timeline -->
+          <div class="m-section-title">Status</div>
+          <div class="m-card">
+            <!-- Step 1 -->
+            <div style="display: flex; gap: 8px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 16px; height: 16px; background: #2D6A4F; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div style="width: 2px; flex: 1; background: #2D6A4F; margin: 2px 0;"></div>
+              </div>
+              <div style="padding-bottom: 8px;"><div style="font-weight: 700; font-size: 9px;">Diterima</div><div style="font-size: 7px; color: #64748B;">2 Jun, 08:30</div></div>
+            </div>
+            <!-- Step 2 -->
+            <div style="display: flex; gap: 8px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 16px; height: 16px; background: #2D6A4F; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div style="width: 2px; flex: 1; background: #2D6A4F; margin: 2px 0;"></div>
+              </div>
+              <div style="padding-bottom: 8px;"><div style="font-weight: 700; font-size: 9px;">Diverifikasi</div><div style="font-size: 7px; color: #64748B;">2 Jun, 09:15</div></div>
+            </div>
+            <!-- Step 3: Current -->
+            <div style="display: flex; gap: 8px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 16px; height: 16px; background: #D97706; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <div style="width: 6px; height: 6px; background: white; border-radius: 50%;"></div>
+                </div>
+                <div style="width: 2px; flex: 1; background: #E2E8F0; margin: 2px 0;"></div>
+              </div>
+              <div style="padding-bottom: 8px;"><div style="font-weight: 700; font-size: 9px; color: #D97706;">Dijadwalkan</div><div style="font-size: 7px; color: #64748B;">Petugas datang hari ini</div></div>
+            </div>
+            <!-- Step 4 -->
+            <div style="display: flex; gap: 8px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 16px; height: 16px; background: #E2E8F0; border-radius: 50%;"></div>
+                <div style="width: 2px; flex: 1; background: #E2E8F0; margin: 2px 0;"></div>
+              </div>
+              <div style="padding-bottom: 8px;"><div style="font-weight: 700; font-size: 9px; color: #94A3B8;">Diambil</div></div>
+            </div>
+            <!-- Step 5 -->
+            <div style="display: flex; gap: 8px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 16px; height: 16px; background: #E2E8F0; border-radius: 50%;"></div>
+              </div>
+              <div><div style="font-weight: 700; font-size: 9px; color: #94A3B8;">Selesai</div></div>
+            </div>
+          </div>
+          <!-- Actions -->
+          <div style="background: #0F172A; color: white; text-align: center; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 10px; margin-top: 6px;">Hubungi Petugas</div>
+          <div style="background: #F1F5F9; color: #475569; text-align: center; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 10px; margin-top: 6px;">Kembali</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wizard Phone -->
+    <div class="mockup-wrapper" style="flex-shrink: 0;">
+      <div class="mockup-label">Setor (Wizard)</div>
+      <div class="phone">
+        <div class="phone-status">09:41</div>
+        <div class="phone-content">
+          <div style="margin: 6px 0 12px;">
+            <div style="font-size: 16px; font-weight: 900; color: #0F172A;">Lapor Sampah</div>
+            <div style="font-size: 9px; color: #64748B; margin-top: 2px;">Langkah 1 dari 5</div>
+          </div>
+          <!-- Progress -->
+          <div style="display: flex; gap: 3px; margin-bottom: 14px;">
+            <div style="flex: 1; height: 3px; background: #2D6A4F; border-radius: 2px;"></div>
+            <div style="flex: 1; height: 3px; background: #E2E8F0; border-radius: 2px;"></div>
+            <div style="flex: 1; height: 3px; background: #E2E8F0; border-radius: 2px;"></div>
+            <div style="flex: 1; height: 3px; background: #E2E8F0; border-radius: 2px;"></div>
+            <div style="flex: 1; height: 3px; background: #E2E8F0; border-radius: 2px;"></div>
+          </div>
+          <!-- Type Cards -->
+          <div style="background: white; border: 2px solid #2D6A4F; border-radius: 14px; padding: 14px; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 40px; height: 40px; background: #ECFDF5; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><path d="M5 7h14l-1.5 9.5a2 2 0 01-2 1.5H8.5a2 2 0 01-2-1.5L5 7z"/><path d="M3 7h18"/></svg>
+              </div>
+              <div>
+                <div style="font-weight: 800; font-size: 11px;">Setor Sampah Rumah</div>
+                <div style="font-size: 8px; color: #64748B;">Panggil petugas untuk menimbang</div>
+              </div>
+            </div>
+            <div style="background: #2D6A4F; color: white; text-align: center; padding: 10px; border-radius: 10px; margin-top: 10px; font-weight: 700; font-size: 10px;">Pilih Setor Sampah</div>
+          </div>
+          <div style="background: white; border: 1px solid #E2E8F0; border-radius: 14px; padding: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 40px; height: 40px; background: #FEF3C7; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              </div>
+              <div>
+                <div style="font-weight: 800; font-size: 11px;">Lapor Sampah Liar</div>
+                <div style="font-size: 8px; color: #64748B;">Foto tumpukan di jalan/selokan</div>
+              </div>
+            </div>
+            <div style="background: #F8FAFC; color: #475569; text-align: center; padding: 10px; border-radius: 10px; margin-top: 10px; font-weight: 700; font-size: 10px; border: 1px solid #E2E8F0;">Pilih Lapor Liar</div>
+          </div>
+          <!-- Draft notice -->
+          <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; padding: 8px 10px; margin-top: 12px; display: flex; align-items: center; gap: 6px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>
+            <div style="font-size: 8px; color: #92400E;">Laporan tersimpan otomatis di HP</div>
+          </div>
+        </div>
+        <div class="phone-tabs">
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Beranda</div>
+          <div class="phone-tab t-active"><div class="phone-tab-dot active"></div>Setor</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Riwayat</div>
+          <div class="phone-tab"><div class="phone-tab-dot"></div>Akun</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3>Detail Laporan — Halaman Baru</h3>
+      <p style="font-size: 12px; color: var(--slate-600); margin: 8px 0; line-height: 1.6;">
+        Ini <strong>satu-satunya</strong> lokasi dimana timeline vertikal lengkap ditampilkan. 
+        Diakses dengan mengetuk kartu di tab Riwayat.
+      </p>
+      <div style="font-size: 12px; color: var(--slate-600); margin: 8px 0; line-height: 1.8;">
+        <strong>Konten:</strong><br>
+        &bull; Ringkasan laporan (jenis, berat, alamat)<br>
+        &bull; Kode pelacakan<br>
+        &bull; Foto lampiran<br>
+        &bull; Timeline lengkap 5 langkah<br>
+        &bull; Tombol WhatsApp petugas<br>
+      </div>
+
+      <div class="divider" style="margin: 16px 0;"></div>
+
+      <h3>Wizard Setor — Restyle Saja</h3>
+      <p style="font-size: 12px; color: var(--slate-600); margin: 8px 0; line-height: 1.6;">
+        Alur 5 langkah tidak berubah. Perubahan hanya visual:
+      </p>
+      <div style="font-size: 12px; color: var(--slate-600); margin: 8px 0; line-height: 1.8;">
+        &bull; Semua emoji dihapus, diganti ikon<br>
+        &bull; Tombol menggunakan palet 2.0<br>
+        &bull; Kartu menggunakan border-radius baru<br>
+        &bull; Fitur P0/P1 dipertahankan:<br>
+        &nbsp;&nbsp;- Auto-save draft ke AsyncStorage<br>
+        &nbsp;&nbsp;- Kompresi foto (0.4 quality)<br>
+        &nbsp;&nbsp;- GPS error handling<br>
+        &nbsp;&nbsp;- Success screen + repeat submit<br>
+      </div>
+    </div>
+  </div>
+  <div class="page-number">7</div>
+</div>
+
+<!-- ===================== PAGE 8: MIGRATION PLAN ===================== -->
+<div class="page">
+  <div class="tag">IMPLEMENTASI</div>
+  <h2>Rencana Migrasi</h2>
+  <p class="subtitle" style="margin-bottom: 28px;">6 fase implementasi. Setiap fase bisa di-deploy independen tanpa merusak fitur yang ada.</p>
+
+  <table>
+    <thead>
+      <tr><th>Fase</th><th>Lingkup</th><th>File yang Diubah</th><th>Risiko</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Foundation</strong></td>
+        <td>Komponen baru: ResikQuickAction, ResikReportCard, ResikMenuRow. Route report-detail.tsx. Tab rename.</td>
+        <td><code>components/ui/</code>, <code>app/report-detail.tsx</code>, <code>app/(tabs)/_layout.tsx</code></td>
+        <td style="color: var(--green-600);">Rendah — additive</td>
+      </tr>
+      <tr>
+        <td><strong>2. Beranda</strong></td>
+        <td>Rewrite home screen dengan hub layout baru</td>
+        <td><code>app/(tabs)/index.tsx</code></td>
+        <td style="color: var(--amber-500);">Sedang — full rewrite</td>
+      </tr>
+      <tr>
+        <td><strong>3. Riwayat</strong></td>
+        <td>Rewrite activity screen, hapus timeline, wire ke detail page</td>
+        <td><code>app/(tabs)/activity.tsx</code></td>
+        <td style="color: var(--amber-500);">Sedang — full rewrite</td>
+      </tr>
+      <tr>
+        <td><strong>4. Akun</strong></td>
+        <td>Rewrite profile, tambah summary card, menu list</td>
+        <td><code>app/(tabs)/profile.tsx</code></td>
+        <td style="color: var(--amber-500);">Sedang — full rewrite</td>
+      </tr>
+      <tr>
+        <td><strong>5. Setor</strong></td>
+        <td>Remove emoji, update styles. Tidak ada perubahan logika.</td>
+        <td><code>app/(tabs)/report.tsx</code></td>
+        <td style="color: var(--green-600);">Rendah — style only</td>
+      </tr>
+      <tr>
+        <td><strong>6. Cleanup</strong></td>
+        <td>Hapus komponen tak terpakai, TypeScript check, lint</td>
+        <td><code>components/ui/</code></td>
+        <td style="color: var(--green-600);">Rendah — removal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>Komponen yang Berubah</h3>
+  <div class="grid-2" style="margin-top: 12px;">
+    <div class="pro-card">
+      <h4>DIPERTAHANKAN</h4>
+      <ul>
+        <li>ResikCard — update radius/shadow</li>
+        <li>ResikStatusChip — dipakai di Riwayat & Beranda</li>
+        <li>ResikStatusTimeline — hanya di Detail page</li>
+        <li>ResikButton — update warna</li>
+        <li>ResikBadge — tetap</li>
+        <li>ResikEmptyState — update copy</li>
+        <li>ResikSection — judul lebih kecil</li>
+        <li>ResikHeader — disederhanakan</li>
+      </ul>
+    </div>
+    <div class="con-card">
+      <h4>DIHAPUS / DIGANTI</h4>
+      <ul>
+        <li>ResikTransactionItem — merge ke ReportCard</li>
+        <li>ResikActionCard — diganti QuickAction grid</li>
+        <li>ResikStatCard — diganti inline stat boxes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Komponen Baru</h3>
+  <table>
+    <thead><tr><th>Komponen</th><th>Fungsi</th><th>Dipakai di</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ResikQuickAction</strong></td><td>Cell grid ikon aksi (icon + label)</td><td>Beranda</td></tr>
+      <tr><td><strong>ResikReportCard</strong></td><td>Kartu status kompak (border kiri + chip)</td><td>Riwayat, Beranda</td></tr>
+      <tr><td><strong>ResikMenuRow</strong></td><td>Baris menu settings (label + chevron)</td><td>Akun</td></tr>
+    </tbody>
+  </table>
+  <div class="page-number">8</div>
+</div>
+
+<!-- ===================== PAGE 9: BEFORE/AFTER ===================== -->
+<div class="page">
+  <div class="tag">PERBANDINGAN</div>
+  <h2>Sebelum vs Sesudah</h2>
+  <p class="subtitle" style="margin-bottom: 28px;">Ringkasan perubahan kunci dari RESIK 1.0 ke RESIK 2.0.</p>
+
+  <table style="font-size: 13px;">
+    <thead>
+      <tr><th style="width: 20%;">Aspek</th><th style="width: 38%;">RESIK 1.0 (Sebelum)</th><th style="width: 38%;">RESIK 2.0 (Sesudah)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Beranda</strong></td>
+        <td>Wallet card + full timeline + carousel reward + large CTA cards. 5+ scroll untuk melihat semua.</td>
+        <td>Hero wallet + 2x2 grid + status terakhir + reward terdekat + bantuan. Muat dalam 1.5 layar.</td>
+      </tr>
+      <tr>
+        <td><strong>Daftar Laporan</strong></td>
+        <td>Setiap kartu memiliki timeline vertikal 5 langkah. Satu kartu menghabiskan seluruh layar.</td>
+        <td>Kartu kompak dengan chip status teks. Satu layar memuat 4-5 kartu.</td>
+      </tr>
+      <tr>
+        <td><strong>Timeline</strong></td>
+        <td>Ditampilkan di Beranda dan setiap kartu Aktivitas (duplikasi informasi).</td>
+        <td>Hanya di halaman Detail Laporan (satu tempat, informasi lengkap).</td>
+      </tr>
+      <tr>
+        <td><strong>Warna</strong></td>
+        <td>Hijau dominan di semua elemen — teks, background, border, ikon.</td>
+        <td>Slate netral sebagai basis. Hijau hanya untuk CTA dan status sukses.</td>
+      </tr>
+      <tr>
+        <td><strong>Emoji</strong></td>
+        <td>Digunakan sebagai pengganti ikon. Render berbeda per perangkat.</td>
+        <td>Dihapus total. Diganti ikon SVG konsisten (Ionicons).</td>
+      </tr>
+      <tr>
+        <td><strong>Reward</strong></td>
+        <td>Carousel horizontal berisi 4 kartu. Harus scroll horizontal.</td>
+        <td>Kartu tunggal "Reward Terdekat" dengan progress bar motivasional.</td>
+      </tr>
+      <tr>
+        <td><strong>Bantuan Lansia</strong></td>
+        <td>Kartu WhatsApp di bagian bawah Beranda (tersembunyi).</td>
+        <td>Kartu hijau muda prominent di Beranda + aksi grid.</td>
+      </tr>
+      <tr>
+        <td><strong>Profil</strong></td>
+        <td>Header besar + section terpisah per group. Banyak scroll.</td>
+        <td>Compact header + summary card + dark officer card + menu list.</td>
+      </tr>
+      <tr>
+        <td><strong>Tab Names</strong></td>
+        <td>Beranda, Lapor, Aktivitas, Profil</td>
+        <td>Beranda, Setor, Riwayat, Akun</td>
+      </tr>
+      <tr>
+        <td><strong>Scrolling</strong></td>
+        <td>5+ full scroll di Beranda, 3+ di Aktivitas</td>
+        <td>Berkurang ~50%. Beranda 1.5x, Riwayat 2x layar.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="grid-3">
+    <div class="metric-card" style="background: var(--green-600);">
+      <div class="metric-value">-50%</div>
+      <div class="metric-label" style="color: rgba(255,255,255,0.7);">Scrolling Berkurang</div>
+    </div>
+    <div class="metric-card" style="background: var(--green-600);">
+      <div class="metric-value">0</div>
+      <div class="metric-label" style="color: rgba(255,255,255,0.7);">Emoji Tersisa</div>
+    </div>
+    <div class="metric-card" style="background: var(--green-600);">
+      <div class="metric-value">1</div>
+      <div class="metric-label" style="color: rgba(255,255,255,0.7);">Lokasi Timeline</div>
+    </div>
+  </div>
+
+  <div style="text-align: center; padding: 40px 0 20px; color: var(--slate-400); font-size: 13px;">
+    <strong style="color: var(--slate-900); font-size: 16px;">RESIK 2.0</strong><br>
+    Village Environmental Operating System<br>
+    <span style="font-size: 11px;">Gojek simplicity untuk sampah desa</span>
+  </div>
+  <div class="page-number">9</div>
+</div>
+
+</body>
+</html>

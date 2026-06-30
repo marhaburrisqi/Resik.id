@@ -1,0 +1,142 @@
+<h2>RESIK 2.0 — Complete Design Summary</h2>
+<p class="subtitle">Review all screens before we proceed to implementation. Click to approve.</p>
+
+<div class="section">
+  <h3>Information Architecture</h3>
+  <div style="background: #0F172A; border-radius: 14px; padding: 20px; color: white; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-around; text-align: center; font-size: 12px;">
+      <div>
+        <div style="background: rgba(45,106,79,0.3); border-radius: 10px; width: 44px; height: 44px; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">🏠</div>
+        <div style="font-weight: 700;">Beranda</div>
+        <div style="font-size: 10px; color: #94A3B8;">Hub + Actions</div>
+      </div>
+      <div>
+        <div style="background: rgba(45,106,79,0.3); border-radius: 10px; width: 44px; height: 44px; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">📋</div>
+        <div style="font-weight: 700;">Setor</div>
+        <div style="font-size: 10px; color: #94A3B8;">Wizard (5-step)</div>
+      </div>
+      <div>
+        <div style="background: rgba(45,106,79,0.3); border-radius: 10px; width: 44px; height: 44px; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">📊</div>
+        <div style="font-weight: 700;">Riwayat</div>
+        <div style="font-size: 10px; color: #94A3B8;">Status Cards</div>
+      </div>
+      <div>
+        <div style="background: rgba(45,106,79,0.3); border-radius: 10px; width: 44px; height: 44px; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">👤</div>
+        <div style="font-weight: 700;">Akun</div>
+        <div style="font-size: 10px; color: #94A3B8;">Profile + Settings</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Screen-by-Screen Changes</h3>
+  
+  <div class="split" style="gap: 16px; margin: 16px 0;">
+    <!-- Beranda -->
+    <div class="mockup">
+      <div class="mockup-header">1. Beranda (BRImo Hub)</div>
+      <div class="mockup-body" style="padding: 14px; font-size: 12px;">
+        <div style="background: linear-gradient(135deg, #0F172A, #1E293B); border-radius: 14px; padding: 14px; color: white; margin-bottom: 10px;">
+          <div style="font-size: 10px; color: #94A3B8;">Halo, Ibu Aminah</div>
+          <div style="font-size: 26px; font-weight: 800; margin: 2px 0;">4.250</div>
+          <div style="font-size: 11px; color: #94A3B8;">Poin Tabungan Sampah</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 10px; text-align: center;">
+          <div style="padding: 8px 2px;">
+            <div style="background: #ECFDF5; border-radius: 10px; width: 38px; height: 38px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 16px;">🗑</div>
+            <div style="font-size: 9px; margin-top: 3px; font-weight: 700;">Setor</div>
+          </div>
+          <div style="padding: 8px 2px;">
+            <div style="background: #FEF3C7; border-radius: 10px; width: 38px; height: 38px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 16px;">⚠</div>
+            <div style="font-size: 9px; margin-top: 3px; font-weight: 700;">Lapor</div>
+          </div>
+          <div style="padding: 8px 2px;">
+            <div style="background: #EFF6FF; border-radius: 10px; width: 38px; height: 38px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 16px;">🎁</div>
+            <div style="font-size: 9px; margin-top: 3px; font-weight: 700;">Tukar</div>
+          </div>
+          <div style="padding: 8px 2px;">
+            <div style="background: #F1F5F9; border-radius: 10px; width: 38px; height: 38px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 16px;">📞</div>
+            <div style="font-size: 9px; margin-top: 3px; font-weight: 700;">Bantuan</div>
+          </div>
+        </div>
+        <div style="background: #FFFBEB; border-radius: 10px; padding: 10px; font-size: 11px; margin-bottom: 10px;">
+          <b>2 laporan</b> sedang diproses
+        </div>
+        <div style="background: white; border-radius: 10px; padding: 10px; font-size: 11px;">
+          312 kg terkumpul · 57 warga · 9 titik bersih
+        </div>
+      </div>
+    </div>
+
+    <!-- Riwayat -->
+    <div class="mockup">
+      <div class="mockup-header">3. Riwayat (Status Cards)</div>
+      <div class="mockup-body" style="padding: 14px; font-size: 12px; background: #F8FAFC;">
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+          <div style="background: #0F172A; color: white; padding: 5px 12px; border-radius: 16px; font-size: 10px; font-weight: 700;">Semua</div>
+          <div style="background: white; border: 1px solid #E2E8F0; padding: 5px 12px; border-radius: 16px; font-size: 10px;">Proses</div>
+          <div style="background: white; border: 1px solid #E2E8F0; padding: 5px 12px; border-radius: 16px; font-size: 10px;">Selesai</div>
+        </div>
+        <div style="font-weight: 800; font-size: 12px; margin-bottom: 6px;">Diproses (2)</div>
+        <div style="background: white; border-radius: 12px; padding: 12px; margin-bottom: 8px; border-left: 3px solid #D97706;">
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <div style="font-weight: 700; font-size: 12px;">Organik · 8 kg</div>
+              <div style="font-size: 10px; color: #64748B;">Dijadwalkan · 2 Jun</div>
+            </div>
+            <div style="background: #FEF3C7; color: #92400E; padding: 2px 8px; border-radius: 6px; font-size: 9px; font-weight: 700; align-self: center;">PROSES</div>
+          </div>
+          <div style="display: flex; gap: 3px; margin-top: 8px; align-items: center;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: #2D6A4F;"></div>
+            <div style="flex: 1; height: 2px; background: #2D6A4F;"></div>
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: #2D6A4F;"></div>
+            <div style="flex: 1; height: 2px; background: #2D6A4F;"></div>
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: #D97706;"></div>
+            <div style="flex: 1; height: 2px; background: #E2E8F0;"></div>
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: #E2E8F0;"></div>
+          </div>
+        </div>
+        <div style="font-weight: 800; font-size: 12px; margin: 8px 0 6px;">Selesai</div>
+        <div style="background: white; border-radius: 12px; padding: 12px; border-left: 3px solid #10B981;">
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <div style="font-weight: 700; font-size: 12px;">B3 · 5 kg</div>
+              <div style="font-size: 10px; color: #64748B;">28 Mei 2026</div>
+            </div>
+            <div style="color: #10B981; font-weight: 800; font-size: 12px;">+500</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Key Principles Applied</h3>
+  <ul style="font-size: 13px; line-height: 1.8; color: #E2E8F0;">
+    <li><strong>No emojis in final implementation</strong> — icons replace all emoji (Ionicons)</li>
+    <li><strong>No vertical timelines</strong> on list screens — replaced by horizontal mini-dots</li>
+    <li><strong>Full timeline only</strong> on dedicated Report Detail page (tap from Riwayat)</li>
+    <li><strong>Green reserved</strong> for CTAs and success only — slate surfaces everywhere</li>
+    <li><strong>4 quick actions</strong> above the fold on Beranda</li>
+    <li><strong>40%+ less scrolling</strong> — compact cards, no section bloat</li>
+    <li><strong>Tab rename:</strong> Beranda, Setor, Riwayat, Akun</li>
+    <li><strong>Wizard unchanged</strong> — just restyled to match 2.0 theme</li>
+  </ul>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Approve — Proceed to implementation spec</h3>
+    </div>
+  </div>
+  <div class="option" data-choice="revise" onclick="toggleSelect(this)">
+    <div class="letter">✎</div>
+    <div class="content">
+      <h3>Revise — I have changes</h3>
+    </div>
+  </div>
+</div>

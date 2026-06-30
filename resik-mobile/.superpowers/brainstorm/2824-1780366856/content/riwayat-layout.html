@@ -1,0 +1,136 @@
+<h2>Riwayat Tab — Compact Status Cards</h2>
+<p class="subtitle">How should report tracking look? No more vertical timelines on the list — detail pages only.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Transaction-Style List (Recommended)</h3>
+      <p>Like GoPay/OVO transaction history. Each row = 1 report. Tap to expand detail page.</p>
+      <div class="mockup" style="margin: 12px 0; padding: 0;">
+        <div class="mockup-body" style="padding: 16px; font-size: 13px; background: #F8FAFC;">
+          <!-- Filter Chips -->
+          <div style="display: flex; gap: 6px; margin-bottom: 12px; overflow: hidden;">
+            <div style="background: #0F172A; color: white; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap;">Semua</div>
+            <div style="background: white; border: 1px solid #E2E8F0; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap;">Diproses</div>
+            <div style="background: white; border: 1px solid #E2E8F0; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap;">Selesai</div>
+          </div>
+          <!-- Summary Strip -->
+          <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+            <div style="flex: 1; background: white; border-radius: 12px; padding: 10px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #D97706;">2</div>
+              <div style="font-size: 10px; color: #64748B;">Diproses</div>
+            </div>
+            <div style="flex: 1; background: white; border-radius: 12px; padding: 10px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #10B981;">8</div>
+              <div style="font-size: 10px; color: #64748B;">Selesai</div>
+            </div>
+            <div style="flex: 1; background: white; border-radius: 12px; padding: 10px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #3B82F6;">1.250</div>
+              <div style="font-size: 10px; color: #64748B;">Poin</div>
+            </div>
+          </div>
+          <!-- Transaction Rows -->
+          <div style="background: white; border-radius: 14px; overflow: hidden;">
+            <div style="padding: 14px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #F1F5F9;">
+              <div style="width: 40px; height: 40px; background: #FEF3C7; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">⏳</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-weight: 700; font-size: 13px;">Organik · 8 kg</div>
+                <div style="font-size: 11px; color: #64748B;">Dijadwalkan · 2 Jun 2026</div>
+              </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                <div style="background: #FEF3C7; color: #92400E; padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 700;">PROSES</div>
+              </div>
+            </div>
+            <div style="padding: 14px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #F1F5F9;">
+              <div style="width: 40px; height: 40px; background: #FEF3C7; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">⏳</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-weight: 700; font-size: 13px;">Anorganik · 2 kg</div>
+                <div style="font-size: 11px; color: #64748B;">Menunggu petugas · 1 Jun</div>
+              </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                <div style="background: #FEF3C7; color: #92400E; padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 700;">PROSES</div>
+              </div>
+            </div>
+            <div style="padding: 14px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #F1F5F9;">
+              <div style="width: 40px; height: 40px; background: #ECFDF5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">✅</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-weight: 700; font-size: 13px;">B3 · 5 kg</div>
+                <div style="font-size: 11px; color: #64748B;">Selesai · 28 Mei 2026</div>
+              </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                <div style="color: #10B981; font-weight: 800; font-size: 13px;">+500</div>
+                <div style="font-size: 10px; color: #64748B;">poin</div>
+              </div>
+            </div>
+            <div style="padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; background: #ECFDF5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">✅</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-weight: 700; font-size: 13px;">Organik · 12 kg</div>
+                <div style="font-size: 11px; color: #64748B;">Selesai · 25 Mei 2026</div>
+              </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                <div style="color: #10B981; font-weight: 800; font-size: 13px;">+1.200</div>
+                <div style="font-size: 10px; color: #64748B;">poin</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Extremely scannable</li><li>No timeline clutter</li><li>Points earned visible at a glance</li><li>Familiar e-wallet pattern</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Need separate detail page for progress</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Status Card Stack</h3>
+      <p>Each report is a card with a mini status indicator (2-3 dots, no full timeline). Tap card for detail.</p>
+      <div class="mockup" style="margin: 12px 0; padding: 0;">
+        <div class="mockup-body" style="padding: 16px; font-size: 13px; background: #F8FAFC;">
+          <!-- Active Section -->
+          <div style="font-weight: 800; font-size: 13px; margin-bottom: 8px; color: #0F172A;">Sedang Diproses (2)</div>
+          <div style="background: white; border-radius: 14px; padding: 16px; margin-bottom: 10px; border-left: 4px solid #D97706;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-weight: 700; font-size: 14px;">Organik · 8 kg</div>
+                <div style="font-size: 11px; color: #64748B; margin-top: 2px;">Jl. Melati RT03 · 2 Jun</div>
+              </div>
+              <div style="background: #FEF3C7; color: #92400E; padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 700;">Dijadwalkan</div>
+            </div>
+            <!-- Mini Progress Dots -->
+            <div style="display: flex; gap: 4px; margin-top: 10px; align-items: center;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #2D6A4F;"></div>
+              <div style="flex: 1; height: 2px; background: #2D6A4F;"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #2D6A4F;"></div>
+              <div style="flex: 1; height: 2px; background: #2D6A4F;"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #D97706; border: 2px solid #D97706;"></div>
+              <div style="flex: 1; height: 2px; background: #E2E8F0;"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #E2E8F0;"></div>
+              <div style="flex: 1; height: 2px; background: #E2E8F0;"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #E2E8F0;"></div>
+            </div>
+          </div>
+          <!-- Completed Section -->
+          <div style="font-weight: 800; font-size: 13px; margin: 12px 0 8px; color: #0F172A;">Selesai</div>
+          <div style="background: white; border-radius: 14px; padding: 14px; margin-bottom: 8px; border-left: 4px solid #10B981;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-weight: 700; font-size: 13px;">B3 · 5 kg</div>
+                <div style="font-size: 11px; color: #64748B;">28 Mei 2026</div>
+              </div>
+              <div style="color: #10B981; font-weight: 800;">+500 Poin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Progress dots still visible</li><li>Grouped by status</li><li>Color-coded left border</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Takes more vertical space</li><li>Mini dots still add visual noise</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

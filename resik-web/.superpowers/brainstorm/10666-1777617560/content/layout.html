@@ -1,0 +1,78 @@
+<h2>Dashboard Layout</h2>
+<p class="subtitle">How should the government dashboard be structured?</p>
+
+<div class="mockup">
+  <div class="mockup-header">Option A — Horizontal Stats + Map Focus</div>
+  <div class="mockup-body">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+      <div class="placeholder" style="height:48px;font-size:11px;">Total Reports</div>
+      <div class="placeholder" style="height:48px;font-size:11px;">Total Waste (kg)</div>
+      <div class="placeholder" style="height:48px;font-size:11px;">Active Users</div>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <div class="mockup" style="flex:2;height:200px;font-size:11px;">Map (large, left)</div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+        <div class="placeholder" style="height:96px;font-size:11px;">Filters</div>
+        <div class="placeholder" style="height:96px;font-size:11px;">Activity Log</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:12px;">
+  <div class="mockup-header">Option B — Sidebar + Content</div>
+  <div class="mockup-body">
+    <div style="display:flex;gap:12px;">
+      <div class="mock-sidebar" style="width:200px;font-size:11px;height:240px;">Nav / Filters</div>
+      <div style="flex:1;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+          <div class="placeholder" style="height:48px;font-size:11px;">Total Reports</div>
+          <div class="placeholder" style="height:48px;font-size:11px;">Total Waste</div>
+          <div class="placeholder" style="height:48px;font-size:11px;">Active Users</div>
+        </div>
+        <div class="mockup" style="height:160px;font-size:11px;">Map (full width)</div>
+        <div class="placeholder" style="height:48px;margin-top:8px;font-size:11px;">Activity Log</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:12px;">
+  <div class="mockup-header">Option C — Grid Dashboard</div>
+  <div class="mockup-body">
+    <div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:12px;">
+      <div class="mockup" style="height:180px;font-size:11px;">Map (main area)</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="placeholder" style="height:48px;font-size:11px;">Total Reports</div>
+        <div class="placeholder" style="height:48px;font-size:11px;">Total Waste</div>
+        <div class="placeholder" style="height:48px;font-size:11px;">Active Users</div>
+      </div>
+      <div class="placeholder" style="font-size:11px;">Activity Log</div>
+      <div class="placeholder" style="font-size:11px;">Filters</div>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Horizontal Stats + Map Focus</h3>
+      <p>Stats row on top, large map on left, filters and activity stacked on right</p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Sidebar + Content</h3>
+      <p>Left sidebar for nav/filters, main content area with stats, map, and log</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Grid Dashboard</h3>
+      <p>CSS Grid layout: map takes main area, stats stacked right, log and filters below</p>
+    </div>
+  </div>
+</div>

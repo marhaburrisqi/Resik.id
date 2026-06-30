@@ -1,0 +1,158 @@
+<h2>Beranda 2.0 — Layout Approach</h2>
+<p class="subtitle">Which information architecture feels right for rural citizens aged 45-70?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>GoPay-Style Hub (Recommended)</h3>
+      <div class="mockup" style="margin: 12px 0; padding: 0;">
+        <div class="mockup-body" style="padding: 16px; font-size: 13px;">
+          <!-- Wallet Strip -->
+          <div style="background: #0F172A; border-radius: 16px; padding: 16px; color: white; margin-bottom: 12px;">
+            <div style="font-size: 11px; color: #94A3B8; letter-spacing: 1px;">TABUNGAN SAMPAH</div>
+            <div style="font-size: 28px; font-weight: 800; margin: 4px 0;">4.250 <span style="font-size: 14px; color: #94A3B8;">Poin</span></div>
+            <div style="font-size: 12px; color: #94A3B8;">Setara Rp4.250 sembako</div>
+          </div>
+          <!-- Quick Action Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+            <div style="background: #F8FAFC; border: 2px solid #2D6A4F; border-radius: 14px; padding: 14px; text-align: center;">
+              <div style="font-size: 22px;">🗑️</div>
+              <div style="font-weight: 700; font-size: 13px; margin-top: 4px;">Setor Sampah</div>
+              <div style="font-size: 11px; color: #64748B;">Panggil petugas</div>
+            </div>
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 14px; padding: 14px; text-align: center;">
+              <div style="font-size: 22px;">⚠️</div>
+              <div style="font-weight: 700; font-size: 13px; margin-top: 4px;">Lapor Liar</div>
+              <div style="font-size: 11px; color: #64748B;">Foto & lapor</div>
+            </div>
+          </div>
+          <!-- Compact Status Card -->
+          <div style="background: #FFFBEB; border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div style="background: #D97706; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13px;">2 laporan sedang diproses</div>
+              <div style="font-size: 11px; color: #64748B;">Ketuk untuk lihat detail</div>
+            </div>
+          </div>
+          <!-- Rewards Strip -->
+          <div style="font-weight: 700; font-size: 13px; margin-bottom: 6px;">Tukar Poin</div>
+          <div style="display: flex; gap: 8px; overflow: hidden;">
+            <div style="background: #F1F5F9; border-radius: 10px; padding: 8px; min-width: 90px; text-align: center; font-size: 11px;">
+              <div style="font-size: 18px;">🛢️</div>
+              Minyak Goreng<br><b>17.000</b>
+            </div>
+            <div style="background: #F1F5F9; border-radius: 10px; padding: 8px; min-width: 90px; text-align: center; font-size: 11px;">
+              <div style="font-size: 18px;">⚡</div>
+              Token Listrik<br><b>21.000</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Minimal scrolling (fits 1 screen)</li><li>Quick actions immediately visible</li><li>Status is glanceable, not a timeline</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Denser layout — may need polish</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>BRImo-Style Dashboard</h3>
+      <div class="mockup" style="margin: 12px 0; padding: 0;">
+        <div class="mockup-body" style="padding: 16px; font-size: 13px;">
+          <!-- Hero Banner -->
+          <div style="background: linear-gradient(135deg, #0F172A, #1E293B); border-radius: 16px; padding: 20px; color: white; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 12px; color: #94A3B8;">Halo, Ibu Aminah</div>
+                <div style="font-size: 32px; font-weight: 800; margin: 4px 0;">4.250</div>
+                <div style="font-size: 12px; color: #94A3B8;">Poin Tabungan Sampah</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 10px; text-align: center;">
+                <div style="font-size: 20px;">📊</div>
+                <div style="font-size: 10px; color: #94A3B8; margin-top: 2px;">Riwayat</div>
+              </div>
+            </div>
+          </div>
+          <!-- Icon Grid Menu -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 12px; text-align: center;">
+            <div style="padding: 10px 4px;">
+              <div style="background: #ECFDF5; border-radius: 12px; width: 44px; height: 44px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 18px;">🗑️</div>
+              <div style="font-size: 10px; margin-top: 4px; font-weight: 600;">Setor</div>
+            </div>
+            <div style="padding: 10px 4px;">
+              <div style="background: #FEF3C7; border-radius: 12px; width: 44px; height: 44px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 18px;">⚠️</div>
+              <div style="font-size: 10px; margin-top: 4px; font-weight: 600;">Lapor</div>
+            </div>
+            <div style="padding: 10px 4px;">
+              <div style="background: #EFF6FF; border-radius: 12px; width: 44px; height: 44px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 18px;">🎁</div>
+              <div style="font-size: 10px; margin-top: 4px; font-weight: 600;">Tukar</div>
+            </div>
+            <div style="padding: 10px 4px;">
+              <div style="background: #F1F5F9; border-radius: 12px; width: 44px; height: 44px; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 18px;">📞</div>
+              <div style="font-size: 10px; margin-top: 4px; font-weight: 600;">Bantuan</div>
+            </div>
+          </div>
+          <!-- Info Banner -->
+          <div style="background: #F1F5F9; border-radius: 12px; padding: 12px; font-size: 12px; color: #475569;">
+            <div style="font-weight: 700; margin-bottom: 4px;">Dampak Desa</div>
+            312 kg terkumpul · 57 warga aktif · 9 titik bersih
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Familiar banking app pattern</li><li>Icon grid is scannable</li><li>Very compact</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Small icons harder for elderly</li><li>Less descriptive text per action</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Dana-Style Card Stack</h3>
+      <div class="mockup" style="margin: 12px 0; padding: 0;">
+        <div class="mockup-body" style="padding: 16px; font-size: 13px;">
+          <!-- Balance Bar -->
+          <div style="background: #0F172A; border-radius: 14px; padding: 14px; color: white; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 11px; color: #94A3B8;">Tabungan Sampah</div>
+              <div style="font-size: 24px; font-weight: 800;">4.250 Poin</div>
+            </div>
+            <div style="background: #2D6A4F; border-radius: 10px; padding: 8px 14px; font-size: 12px; font-weight: 700;">Tukar</div>
+          </div>
+          <!-- Large CTA Cards -->
+          <div style="background: white; border: 2px solid #2D6A4F; border-radius: 16px; padding: 18px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="background: #ECFDF5; border-radius: 12px; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🗑️</div>
+              <div>
+                <div style="font-weight: 800; font-size: 15px;">Setor Sampah Rumah</div>
+                <div style="font-size: 12px; color: #64748B;">Panggil petugas untuk menimbang</div>
+              </div>
+            </div>
+          </div>
+          <div style="background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 14px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="background: #FEF3C7; border-radius: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 20px;">⚠️</div>
+              <div>
+                <div style="font-weight: 700; font-size: 14px;">Lapor Sampah Liar</div>
+                <div style="font-size: 11px; color: #64748B;">Foto tumpukan di jalan</div>
+              </div>
+            </div>
+          </div>
+          <!-- Status Banner -->
+          <div style="background: #FFFBEB; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; font-size: 12px;">
+            <span style="font-size: 16px;">🔔</span>
+            <span style="font-weight: 600;">2 laporan menunggu pengambilan</span>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Large tap targets (elderly-friendly)</li><li>Clear visual hierarchy</li><li>Descriptive text on actions</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More vertical space used</li><li>Rewards less prominent</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
